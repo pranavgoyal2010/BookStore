@@ -1,0 +1,15 @@
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\bin\Debug\net8.0\RepositoryLayer.deps.json
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\bin\Debug\net8.0\RepositoryLayer.dll
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\bin\Debug\net8.0\RepositoryLayer.pdb
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\bin\Debug\net8.0\ModelLayer.dll
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\bin\Debug\net8.0\ModelLayer.pdb
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.AssemblyInfo.cs
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\Reposito.A0A61804.Up2Date
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.dll
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\refint\RepositoryLayer.dll
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.pdb
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\ref\RepositoryLayer.dll

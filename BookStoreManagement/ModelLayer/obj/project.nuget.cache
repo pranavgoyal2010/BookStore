@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "EY8CRyuL5xC412OAYXctBwgYm0GjcxjHSp5A0+iRi1jNXO67v26zyhSlbuATL2okBi14TRSVb2s79olVrpn+Xg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\prana\\Desktop\\BridgeLabz\\BookStoreBackend\\BookStoreManagement\\BookStoreManagement\\ModelLayer\\ModelLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\prana\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
