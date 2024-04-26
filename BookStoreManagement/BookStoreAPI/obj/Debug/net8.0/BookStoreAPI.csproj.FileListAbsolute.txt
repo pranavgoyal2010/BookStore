@@ -73,3 +73,4 @@ C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStore
 C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.pdb
 C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.genruntimeconfig.cache
 C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\BookStoreAPI\obj\Debug\net8.0\ref\BookStoreAPI.dll
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.sourcelink.json

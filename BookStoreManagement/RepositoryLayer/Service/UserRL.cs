@@ -11,10 +11,12 @@ namespace RepositoryLayer.Service;
 public class UserRL : IUserRL
 {
     private readonly BookStoreContext _bookStoreContext;
+    private readonly IAuthServiceRL _authServiceRL;
 
-    public UserRL(BookStoreContext bookStoreContext)
+    public UserRL(BookStoreContext bookStoreContext, IAuthServiceRL authServiceRL)
     {
         _bookStoreContext = bookStoreContext;
+        _authServiceRL = authServiceRL;
     }
 
     public async Task<bool> Register(UserRegistrationDto userRegistrationDto)
@@ -54,7 +56,7 @@ public class UserRL : IUserRL
         }
     }
 
-    public async Task<bool> Login(UserLoginDto userLoginDto)
+    public async Task<string> Login(UserLoginDto userLoginDto)
     {
         var query = "SELECT * FROM [User] WHERE Email = @Email";
 
@@ -72,7 +74,7 @@ public class UserRL : IUserRL
                 throw new InvalidLoginException("Invalid password");
             }
 
-            return true;
+            return _authServiceRL.GenerateJwtToken(user);
         }
     }
 

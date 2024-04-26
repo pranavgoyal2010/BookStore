@@ -13,3 +13,4 @@ C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStore
 C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\refint\RepositoryLayer.dll
 C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.pdb
 C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\ref\RepositoryLayer.dll
+C:\Users\prana\Desktop\BridgeLabz\BookStoreBackend\BookStoreManagement\BookStoreManagement\RepositoryLayer\obj\Debug\net8.0\RepositoryLayer.sourcelink.json

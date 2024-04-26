@@ -16,7 +16,7 @@ public class UserBL : IUserBL
     {
         return _userRL.Register(userRegistrationDto);
     }
-    public Task<bool> Login(UserLoginDto userLoginDto)
+    public Task<string> Login(UserLoginDto userLoginDto)
     {
         return _userRL.Login(userLoginDto);
     }

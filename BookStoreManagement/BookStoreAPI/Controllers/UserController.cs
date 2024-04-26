@@ -61,12 +61,12 @@ public class UserController : ControllerBase
     {
         try
         {
-            bool result = await _userBL.Login(userLoginDto);
+            string token = await _userBL.Login(userLoginDto);
 
-            var response = new ResponseModel<bool>
+            var response = new ResponseModel<string>
             {
                 Message = "Login Successful",
-                Data = result
+                Data = token
             };
             return Ok(response);
         }
