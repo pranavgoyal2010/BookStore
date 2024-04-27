@@ -89,4 +89,117 @@ public class UserController : ControllerBase
             return StatusCode(500, errorResponse);
         }
     }
+
+
+    [HttpPost("forgetpassword")]
+    public async Task<IActionResult> ForgetPassword(ForgetPasswordDto forgetPasswordDto)
+    {
+        try
+        {
+
+            string Otp = await _userBL.ForgetPassword(forgetPasswordDto);
+
+            if (Otp != null)
+            {
+                var response = new ResponseModel<string>
+                {
+                    Success = true,
+                    Message = "Email sent successfully.",
+                };
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ResponseModel<string>
+                {
+                    Success = false,
+                    Message = "Failed to send email.",
+                };
+                return BadRequest(response);
+            }
+        }
+        catch (NotFoundException ex)
+        {
+            var response = new ResponseModel<string>
+            {
+
+                Success = false,
+                Message = $"Error sending email: {ex.Message}",
+            };
+            return StatusCode(500, response);
+        }
+        catch (EmailSendingException ex)
+        {
+            var response = new ResponseModel<string>
+            {
+
+                Success = false,
+                Message = $"Error sending email: {ex.Message}",
+            };
+            return StatusCode(500, response);
+        }
+        catch (Exception ex)
+        {
+            var response = new ResponseModel<string>
+            {
+                Success = false,
+                Message = $"An unexpected error occurred: {ex.Message}",
+            };
+            return StatusCode(500, response);
+        }
+    }
+
+    [HttpPost("resetpassword")]
+    public async Task<IActionResult> ResetPassword(ResetPasswordWithOTPDto resetPasswordDto)
+    {
+        try
+        {
+            bool isPasswordReset = await _userBL.ResetPassword(resetPasswordDto);
+            if (isPasswordReset)
+            {
+                var response = new ResponseModel<bool>
+                {
+                    Success = true,
+                    Message = "Password reset successfully",
+                    Data = isPasswordReset
+                };
+                return Ok(response);
+
+            }
+            return BadRequest();
+        }
+        catch (InvalidOTPException ex)
+        {
+            var response = new ResponseModel<bool>
+            {
+                Success = false,
+                Message = ex.Message,
+                Data = false
+            };
+
+            return BadRequest(response);
+        }
+        catch (NotFoundException ex)
+        {
+            var response = new ResponseModel<bool>
+            {
+                Success = false,
+                Message = ex.Message,
+                Data = false
+            };
+
+            return NotFound(response);
+        }
+        catch (Exception ex)
+        {
+            var response = new ResponseModel<bool>
+            {
+                Success = false,
+                Message = ex.Message,
+                Data = false
+            };
+
+            return StatusCode(500, response);
+        }
+    }
 }

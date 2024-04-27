@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ecv8v9QPvdws4Lg0VVMofA4ulR0rkTJXUOpL55WLKH/oF5s0FQIHoYrUi4ZJCx6H2ZK09hvVgIK2Il0VIMXH2w==",
+  "dgSpecHash": "x+okdBe/iReVom5dVMzY9M0BRMpu1QP0blwvS5XkvOAeUvUKa9Zz1yfCEkYeTHkgMVC+UAKCkHHyfiNqqGcnag==",
   "success": true,
   "projectFilePath": "C:\\Users\\prana\\Desktop\\BridgeLabz\\BookStoreBackend\\BookStoreManagement\\BookStoreManagement\\RepositoryLayer\\RepositoryLayer.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\prana\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\prana\\.nuget\\packages\\microsoft.data.sqlclient\\5.2.0\\microsoft.data.sqlclient.5.2.0.nupkg.sha512",
     "C:\\Users\\prana\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.2.0\\microsoft.data.sqlclient.sni.runtime.5.2.0.nupkg.sha512",
+    "C:\\Users\\prana\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\prana\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\prana\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\prana\\.nuget\\packages\\microsoft.identity.client\\4.56.0\\microsoft.identity.client.4.56.0.nupkg.sha512",

@@ -1,5 +1,7 @@
 using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.Extensions.Options;
+using ModelLayer.Dto;
 using RepositoryLayer.Context;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
@@ -11,6 +13,16 @@ builder.Services.AddSingleton<BookStoreContext>();
 builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IUserRL, UserRL>();
 builder.Services.AddScoped<IAuthServiceRL, AuthServiceRL>();
+
+builder.Services.AddScoped<IEmailServiceBL, EmailServiceBL>();
+
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddScoped<IEmailServiceRL, EmailServiceRL>();
+
+// Change the injection to use IOptions<EmailSettings>
+builder.Services.AddScoped(sp => sp.GetRequiredService<IOptions<EmailSettings>>().Value);
+
+builder.Services.AddMemoryCache();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

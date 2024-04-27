@@ -20,4 +20,12 @@ public class UserBL : IUserBL
     {
         return _userRL.Login(userLoginDto);
     }
+    public Task<string> ForgetPassword(ForgetPasswordDto forgetPasswordDto)
+    {
+        return _userRL.ForgetPassword(forgetPasswordDto);
+    }
+    public Task<bool> ResetPassword(ResetPasswordWithOTPDto resetPasswordWithOTPDto)
+    {
+        return _userRL.ResetPassword(resetPasswordWithOTPDto);
+    }
 }

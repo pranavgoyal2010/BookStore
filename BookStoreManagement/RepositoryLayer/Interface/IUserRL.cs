@@ -6,7 +6,7 @@ public interface IUserRL
 {
     public Task<bool> Register(UserRegistrationDto userRegistrationDto);
     public Task<string> Login(UserLoginDto userLoginDto);
-    //public Task<bool> ResetPasswordAsync(string userEmail, string oldPassword, string newPassword);
-    //public Task<string> ForgotPasswordAsync(string userEmail);
+    public Task<string> ForgetPassword(ForgetPasswordDto forgetPasswordDto);
+    public Task<bool> ResetPassword(ResetPasswordWithOTPDto resetPasswordWithOTPDto);
 }
 
