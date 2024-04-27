@@ -22,3 +22,18 @@ CREATE TABLE Books (
     UpdatedOn DATETIME
 );
 
+CREATE TABLE Cart (
+    CartId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT,
+    FOREIGN KEY (UserId) REFERENCES [User](UserId)
+)
+
+CREATE TABLE CartItem (
+    CartItemId INT PRIMARY KEY IDENTITY(1,1),
+    CartId INT,
+    BookId INT,
+    Quantity INT,
+    Price DECIMAL(10, 2),
+    FOREIGN KEY (CartId) REFERENCES Cart(CartId),
+    FOREIGN KEY (BookId) REFERENCES Books(BookId)
+)
