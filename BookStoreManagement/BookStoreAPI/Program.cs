@@ -32,6 +32,8 @@ builder.Services.AddScoped<IBookBL, BookBL>();
 builder.Services.AddScoped<IBookRL, BookRL>();
 builder.Services.AddScoped<ICartBL, CartBL>();
 builder.Services.AddScoped<ICartRL, CartRL>();
+builder.Services.AddScoped<IOrderBL, OrderBL>();
+builder.Services.AddScoped<IOrderRL, OrderRL>();
 
 // Retrieve the secret key from appsettings.json for JWT token validation
 var key = Encoding.ASCII.GetBytes(builder.Configuration["JwtSettings:SecretKey"]);

@@ -6,135 +6,134 @@ using ModelLayer.Response;
 using RepositoryLayer.Entity;
 using System.Security.Claims;
 
-namespace BookStoreAPI.Controllers
+namespace BookStoreAPI.Controllers;
+
+[Route("api/cart")]
+[ApiController]
+public class CartController : ControllerBase
 {
-    [Route("api/cart")]
-    [ApiController]
-    public class CartController : ControllerBase
+    private readonly ICartBL _cartBL;
+
+    public CartController(ICartBL cartBL)
     {
-        private readonly ICartBL _cartBL;
+        _cartBL = cartBL;
+    }
 
-        public CartController(ICartBL cartBL)
+    [HttpGet]
+    [Authorize(Roles = "customer")]
+    public async Task<IActionResult> GetAllCartItems()
+    {
+        try
         {
-            _cartBL = cartBL;
+            var userIdClaimed = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int userId = Convert.ToInt32(userIdClaimed);
+
+            var result = await _cartBL.GetAllCartItems(userId);
+
+            var response = new ResponseModel<IEnumerable<CartItemEntity>>
+            {
+                Message = "All items retrieved from cart",
+                Data = result
+            };
+
+            return Ok(response);
         }
-
-        [HttpGet]
-        [Authorize(Roles = "customer")]
-        public async Task<IActionResult> GetAllCartItems()
+        catch (Exception ex)
         {
-            try
+            var response = new ResponseModel<string>
             {
-                var userIdClaimed = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                int userId = Convert.ToInt32(userIdClaimed);
-
-                var result = await _cartBL.GetAllCartItems(userId);
-
-                var response = new ResponseModel<IEnumerable<CartItemEntity>>
-                {
-                    Message = "All items retrieved from cart",
-                    Data = result
-                };
-
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                var response = new ResponseModel<string>
-                {
-                    Success = false,
-                    Message = ex.Message
-                };
-                return BadRequest(response);
-            }
+                Success = false,
+                Message = ex.Message
+            };
+            return BadRequest(response);
         }
+    }
 
 
-        [HttpPost]
-        [Authorize(Roles = "customer")]
-        public async Task<IActionResult> AddToCart(CartItemDto cartItemDto)
+    [HttpPost]
+    [Authorize(Roles = "customer")]
+    public async Task<IActionResult> AddToCart(CartItemDto cartItemDto)
+    {
+        try
         {
-            try
+            var userIdClaimed = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            int userId = Convert.ToInt32(userIdClaimed);
+
+            var result = await _cartBL.AddToCart(userId, cartItemDto);
+
+            var response = new ResponseModel<CartItemEntity>
             {
-                var userIdClaimed = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                int userId = Convert.ToInt32(userIdClaimed);
+                Message = "Item added to cart",
+                Data = result
+            };
 
-                var result = await _cartBL.AddToCart(userId, cartItemDto);
+            return Ok(response);
 
-                var response = new ResponseModel<CartItemEntity>
-                {
-                    Message = "Item added to cart",
-                    Data = result
-                };
-
-                return Ok(response);
-
-            }
-            catch (Exception ex)
-            {
-                var response = new ResponseModel<string>
-                {
-                    Success = false,
-                    Message = ex.Message
-                };
-                return BadRequest(response);
-            }
         }
-
-        [HttpDelete("{cartItemId}")]
-        [Authorize(Roles = "customer")]
-        public async Task<IActionResult> RemoveFromCart(int cartItemId)
+        catch (Exception ex)
         {
-            try
+            var response = new ResponseModel<string>
             {
-                var result = await _cartBL.RemoveFromCart(cartItemId);
-
-                var response = new ResponseModel<bool>
-                {
-                    Message = "Item deleted from cart",
-                };
-
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                var response = new ResponseModel<string>
-                {
-                    Success = false,
-                    Message = ex.Message
-                };
-                return BadRequest(response);
-            }
+                Success = false,
+                Message = ex.Message
+            };
+            return BadRequest(response);
         }
+    }
 
-        [HttpPatch("{cartItemId}")]
-        [Authorize(Roles = "customer")]
-        public async Task<IActionResult> UpdateToCart(int cartItemId, int quantity)
+    [HttpDelete("{cartItemId}")]
+    [Authorize(Roles = "customer")]
+    public async Task<IActionResult> RemoveFromCart(int cartItemId)
+    {
+        try
         {
-            if (quantity <= 0)
-            {
-                return BadRequest("Quantity must be greater than zero.");
-            }
-            try
-            {
-                var result = await _cartBL.UpdateCart(cartItemId, quantity);
-                var response = new ResponseModel<CartItemEntity>
-                {
-                    Message = "Item updated in the cart",
-                    Data = result
-                };
+            var result = await _cartBL.RemoveFromCart(cartItemId);
 
-                return Ok(response);
-            }
-            catch (Exception ex)
+            var response = new ResponseModel<bool>
             {
-                var response = new ResponseModel<string>
-                {
-                    Success = false,
-                    Message = ex.Message
-                };
-                return BadRequest(response);
-            }
+                Message = "Item deleted from cart",
+            };
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            var response = new ResponseModel<string>
+            {
+                Success = false,
+                Message = ex.Message
+            };
+            return BadRequest(response);
+        }
+    }
+
+    [HttpPatch("{cartItemId}")]
+    [Authorize(Roles = "customer")]
+    public async Task<IActionResult> UpdateToCart(int cartItemId, int quantity)
+    {
+        if (quantity <= 0)
+        {
+            return BadRequest("Quantity must be greater than zero.");
+        }
+        try
+        {
+            var result = await _cartBL.UpdateCart(cartItemId, quantity);
+            var response = new ResponseModel<CartItemEntity>
+            {
+                Message = "Item updated in the cart",
+                Data = result
+            };
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            var response = new ResponseModel<string>
+            {
+                Success = false,
+                Message = ex.Message
+            };
+            return BadRequest(response);
         }
     }
 }

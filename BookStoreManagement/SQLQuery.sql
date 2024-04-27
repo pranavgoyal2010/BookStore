@@ -37,3 +37,22 @@ CREATE TABLE CartItem (
     FOREIGN KEY (CartId) REFERENCES Cart(CartId),
     FOREIGN KEY (BookId) REFERENCES Books(BookId)
 )
+
+CREATE TABLE [Order] (
+    OrderId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT, 
+    OrderDate DATE, 
+    Address VARCHAR(255), 
+    Amount DECIMAL(10, 2), 
+    FOREIGN KEY (UserId) REFERENCES [User](UserId)
+)
+
+CREATE TABLE OrderItem (
+    OrderItemId INT PRIMARY KEY IDENTITY(1,1),
+    OrderId INT, 
+    BookId INT,
+    Quantity INT,
+    Price DECIMAL(10, 2),
+    FOREIGN KEY (OrderId) REFERENCES [Order](OrderId),
+    FOREIGN KEY (BookId) REFERENCES Books(BookId)
+)
