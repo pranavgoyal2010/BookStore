@@ -18,4 +18,9 @@ public class BookBL : IBookBL
     {
         return _bookRL.AddBook(addBookDto);
     }
+
+    public Task<IEnumerable<BooksEntity>> GetAllBooks()
+    {
+        return _bookRL.GetAllBooks();
+    }
 }

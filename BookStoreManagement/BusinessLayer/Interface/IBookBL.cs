@@ -6,4 +6,5 @@ namespace BusinessLayer.Interface;
 public interface IBookBL
 {
     public Task<BooksEntity> AddBook(AddBookDto addBookDto);
+    public Task<IEnumerable<BooksEntity>> GetAllBooks();
 }

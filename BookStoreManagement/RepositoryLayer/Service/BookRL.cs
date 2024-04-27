@@ -48,4 +48,22 @@ public class BookRL : IBookRL
             throw new Exception("Error occurred while adding book", ex);
         }
     }
+
+    public async Task<IEnumerable<BooksEntity>> GetAllBooks()
+    {
+        try
+        {
+            string query = "SELECT * FROM Books";
+
+            using (var connection = _bookStoreContext.CreateConnection())
+            {
+                IEnumerable<BooksEntity> books = await connection.QueryAsync<BooksEntity>(query);
+                return books;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error occurred while retrieving all books", ex);
+        }
+    }
 }

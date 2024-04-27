@@ -58,4 +58,31 @@ public class BookController : ControllerBase
             return StatusCode(500, errorResponse);
         }
     }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllBooks()
+    {
+        try
+        {
+            var books = await _bookBL.GetAllBooks();
+
+            var response = new ResponseModel<IEnumerable<BooksEntity>>
+            {
+                Message = "Books retrieved successfully",
+                Data = books
+            };
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            var errorResponse = new ResponseModel<string>
+            {
+                Success = false,
+                Message = ex.Message
+            };
+
+            return StatusCode(500, errorResponse);
+        }
+    }
 }

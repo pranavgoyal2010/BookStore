@@ -6,7 +6,7 @@ namespace RepositoryLayer.Interface;
 public interface IBookRL
 {
     //public Task<BooksEntity> GetBookById(int bookId);
-    //public Task<IEnumerable<BooksEntity>> GetAllBooks();
+    public Task<IEnumerable<BooksEntity>> GetAllBooks();
     public Task<BooksEntity> AddBook(AddBookDto addBookDto);
     //public Task<bool> DeleteBookAsync(long bookId);
     //public Task<BooksEntity> UpdateBookAsync(BooksEntity updateBook, int bookId);
