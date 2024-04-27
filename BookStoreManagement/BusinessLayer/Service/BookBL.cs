@@ -23,4 +23,9 @@ public class BookBL : IBookBL
     {
         return _bookRL.GetAllBooks();
     }
+
+    public Task<BooksEntity> UpdateBook(int bookId, UpdateBookDto updateBookDto)
+    {
+        return _bookRL.UpdateBook(bookId, updateBookDto);
+    }
 }

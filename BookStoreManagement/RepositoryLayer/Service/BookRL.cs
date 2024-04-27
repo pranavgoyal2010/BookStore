@@ -66,4 +66,46 @@ public class BookRL : IBookRL
             throw new Exception("Error occurred while retrieving all books", ex);
         }
     }
+
+    public async Task<BooksEntity> UpdateBook(int bookId, UpdateBookDto updateBookDto)
+    {
+        try
+        {
+            string updateQuery = @" UPDATE Books SET
+                                                        BookName = @BookName,
+                                                        Description = @Description,
+                                                        Author = @Author,
+                                                        Price = @Price,
+                                                        BookImage = @BookImage,
+                                                        Quantity = @Quantity,
+                                                        UpdatedOn = @UpdatedOn
+                                                        WHERE BookId = @BookId;
+                                                        ";
+
+            using (var connection = _bookStoreContext.CreateConnection())
+            {
+                await connection.ExecuteAsync(updateQuery, new
+                {
+                    updateBookDto.BookName,
+                    updateBookDto.Description,
+                    updateBookDto.Author,
+                    updateBookDto.Price,
+                    updateBookDto.BookImage,
+                    updateBookDto.Quantity,
+                    UpdatedOn = DateTime.Now,
+                    BookId = bookId
+                });
+
+                // Retrieve the updated book from the database
+                string selectQuery = "SELECT * FROM Books WHERE BookId = @BookId";
+                var updatedBook = await connection.QueryFirstOrDefaultAsync<BooksEntity>(selectQuery, new { BookId = bookId });
+
+                return updatedBook;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error occurred while updating book", ex);
+        }
+    }
 }

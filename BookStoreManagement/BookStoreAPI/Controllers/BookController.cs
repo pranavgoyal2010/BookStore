@@ -85,4 +85,44 @@ public class BookController : ControllerBase
             return StatusCode(500, errorResponse);
         }
     }
+
+    [Authorize(Roles = "admin")]
+    [HttpPut("{bookId}")]
+    public async Task<IActionResult> UpdateBook(int bookId, [FromBody] UpdateBookDto updateBookDto)
+    {
+        try
+        {
+            if (updateBookDto == null)
+            {
+                var errorResponse = new ResponseModel<string>
+                {
+                    Success = false,
+                    Message = "Book object is null"
+                };
+                return BadRequest(errorResponse);
+            }
+
+            var updatedBook = await _bookBL.UpdateBook(bookId, updateBookDto);
+
+
+            var response = new ResponseModel<BooksEntity>
+            {
+                Message = "Book updated successfully",
+                Data = updatedBook
+            };
+
+            return Ok(response);
+        }
+
+        catch (Exception ex)
+        {
+            var errorResponse = new ResponseModel<string>
+            {
+                Success = false,
+                Message = ex.Message
+            };
+
+            return StatusCode(500, errorResponse);
+        }
+    }
 }
