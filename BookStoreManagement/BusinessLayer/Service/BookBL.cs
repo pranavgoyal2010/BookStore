@@ -14,6 +14,11 @@ public class BookBL : IBookBL
         _bookRL = bookRL;
     }
 
+    public Task<BooksEntity> GetBookById(int bookId)
+    {
+        return _bookRL.GetBookById(bookId);
+    }
+
     public Task<BooksEntity> AddBook(AddBookDto addBookDto)
     {
         return _bookRL.AddBook(addBookDto);

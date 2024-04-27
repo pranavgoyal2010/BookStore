@@ -113,7 +113,7 @@ public class BookRL : IBookRL
     {
         try
         {
-            string deleteQuery = @"DELETE FROM Books WHERE BookID = @BookId";
+            string deleteQuery = @"DELETE FROM Books WHERE BookId = @BookId";
 
             using (var connection = _bookStoreContext.CreateConnection())
             {
@@ -126,6 +126,24 @@ public class BookRL : IBookRL
         catch (Exception ex)
         {
             throw new Exception("Error occurred while deleting book", ex);
+        }
+    }
+
+    public async Task<BooksEntity> GetBookById(int bookId)
+    {
+        try
+        {
+            string query = "SELECT * FROM Books WHERE BookId = @BookId";
+
+            using (var connection = _bookStoreContext.CreateConnection())
+            {
+                return await connection.QueryFirstOrDefaultAsync<BooksEntity>(query, new { BookId = bookId });
+            }
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions appropriately
+            throw new Exception($"Error occurred while retrieving book with ID {bookId}", ex);
         }
     }
 }

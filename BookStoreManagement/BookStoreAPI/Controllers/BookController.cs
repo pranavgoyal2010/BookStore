@@ -18,6 +18,40 @@ public class BookController : ControllerBase
         _bookBL = bookBL;
     }
 
+    [HttpGet("{bookId}")]
+    public async Task<IActionResult> GetBookById(int bookId)
+    {
+        try
+        {
+            var book = await _bookBL.GetBookById(bookId);
+            if (book == null)
+            {
+                var errorResponse = new ResponseModel<string>
+                {
+                    Success = false,
+                    Message = $"Book with ID {bookId} not found"
+                };
+                return NotFound(errorResponse);
+            }
+
+            var response = new ResponseModel<BooksEntity>
+            {
+                Message = "Book Retrieved successfully",
+                Data = book
+            };
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            var errorResponse = new ResponseModel<string>
+            {
+                Success = false,
+                Message = "An error occurred while retrieving book"
+            };
+            return StatusCode(500, errorResponse);
+
+        }
+    }
 
     [Authorize(Roles = "admin")]
     [HttpPost]
