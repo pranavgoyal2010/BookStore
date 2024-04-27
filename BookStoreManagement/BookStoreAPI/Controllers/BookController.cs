@@ -125,4 +125,41 @@ public class BookController : ControllerBase
             return StatusCode(500, errorResponse);
         }
     }
+
+    [Authorize(Roles = "admin")]
+    [HttpDelete("{bookId}")]
+    public async Task<IActionResult> DeleteBook(int bookId)
+    {
+        try
+        {
+            var deleted = await _bookBL.DeleteBook(bookId);
+
+            if (deleted)
+            {
+                var response = new ResponseModel<string>
+                {
+                    Message = "Book deleted successfully"
+                };
+                return Ok(response);
+            }
+            else
+            {
+                var response = new ResponseModel<string>
+                {
+                    Success = false,
+                    Message = $"Book with ID {bookId} not found"
+                };
+                return NotFound(response);
+            }
+        }
+        catch (Exception ex)
+        {
+            var response = new ResponseModel<string>
+            {
+                Success = false,
+                Message = ex.Message
+            };
+            return StatusCode(500, response);
+        }
+    }
 }

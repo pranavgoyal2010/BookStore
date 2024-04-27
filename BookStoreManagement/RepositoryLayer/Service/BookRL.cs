@@ -108,4 +108,24 @@ public class BookRL : IBookRL
             throw new Exception("Error occurred while updating book", ex);
         }
     }
+
+    public async Task<bool> DeleteBook(int bookId)
+    {
+        try
+        {
+            string deleteQuery = @"DELETE FROM Books WHERE BookID = @BookId";
+
+            using (var connection = _bookStoreContext.CreateConnection())
+            {
+                int rowsAffected = await connection.ExecuteAsync(deleteQuery, new { BookId = bookId });
+
+                // If any row is affected, return true indicating successful deletion
+                return rowsAffected > 0;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error occurred while deleting book", ex);
+        }
+    }
 }

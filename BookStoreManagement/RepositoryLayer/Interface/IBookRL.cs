@@ -9,7 +9,6 @@ public interface IBookRL
     public Task<IEnumerable<BooksEntity>> GetAllBooks();
     public Task<BooksEntity> AddBook(AddBookDto addBookDto);
     public Task<BooksEntity> UpdateBook(int bookId, UpdateBookDto updateBookDto);
-    //public Task<bool> DeleteBookAsync(long bookId);
-    //public Task<BooksEntity> UpdateBookAsync(BooksEntity updateBook, int bookId);
+    public Task<bool> DeleteBook(int bookId);
 
 }

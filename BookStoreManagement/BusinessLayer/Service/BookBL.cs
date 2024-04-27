@@ -28,4 +28,9 @@ public class BookBL : IBookBL
     {
         return _bookRL.UpdateBook(bookId, updateBookDto);
     }
+
+    public Task<bool> DeleteBook(int bookId)
+    {
+        return _bookRL.DeleteBook(bookId);
+    }
 }
